@@ -46,36 +46,16 @@ export const getOne = async (req, res) => {
 export const remove = async (req, res) => {
   try {
     const postId = req.params.id;
-    // PostModel.findOneAndDelete(
-    //   {
-    //     _id: postId,
-    //   },
-    //   (err, doc) => {
-    //     if (err) {
-    //       console.log(err);
-    //       return res.status(500).json({
-    //         message: "Failed to delete the post",
-    //       });
-    //     }
 
-    //     if (!doc) {
-    //       return res.status(404).json({
-    //         message: "The post isn`t found",
-    //       });
-    //     }
-
-    //     res.json({
-    //       success: true,
-    //     });
-    //   }
-    // );
-    const data = await CommentModel.findByIdAndDelete(
-      { post_id: postId },
+    PostModel.findOneAndDelete(
+      {
+        _id: postId,
+      },
       (err, doc) => {
         if (err) {
           console.log(err);
           return res.status(500).json({
-            message: "Failed to delete the post",
+            message: "Failed to remove the post",
           });
         }
 
@@ -90,30 +70,6 @@ export const remove = async (req, res) => {
         });
       }
     );
-    return data;
-    // CommentModel.findByIdAndDelete(
-    //   {
-    //     _id: comment,
-    //   },
-    //   (err, doc) => {
-    //     if (err) {
-    //       console.log(err);
-    //       return res.status(500).json({
-    //         message: "Failed to delete the comment",
-    //       });
-    //     }
-
-    //     if (!doc) {
-    //       return res.status(404).json({
-    //         message: "The comment isn`t found",
-    //       });
-    //     }
-
-    //     res.json({
-    //       success: true,
-    //     });
-    //   }
-    // );
   } catch (err) {
     console.log(err);
     res.status(500).json({
