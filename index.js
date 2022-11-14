@@ -86,10 +86,10 @@ app.patch(
 app.get("/tags", PostControllers.getLastTags);
 app.get("/tags/:name", PostControllers.getSimilarTags);
 
-//comments
-// app.post("/posts/:id/comments", checkAuth, CommentControllers.createComment);
-// app.get("/comments", CommentControllers.getAllComment);
-// app.get("/posts/:id/comments", CommentControllers.getOneComment);
+comments
+app.post("/posts/:id/comments", checkAuth, CommentControllers.createComment);
+app.get("/comments", CommentControllers.getAllComment);
+app.get("/posts/:id/comments", CommentControllers.getOneComment);
 
 app.listen(process.env.PORT || 4444, (error) => {
   if (error) {
