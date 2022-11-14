@@ -39,8 +39,7 @@ const upload = multer({ storage });
 app.use(express.json());
 app.use(cors());
 app.use("/upload", express.static("uploads"));
-app.use(express.static(__dirname + "/posts"));
-
+// 
 //Image
 app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
   res.json({
@@ -64,6 +63,7 @@ app.post(
 );
 
 // posts
+app.get("/", PostControllers.getAll);
 app.get("/posts", PostControllers.getAll);
 app.get("/posts/:id", PostControllers.getOne);
 app.post(
