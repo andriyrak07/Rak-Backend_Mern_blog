@@ -39,6 +39,7 @@ const upload = multer({ storage });
 app.use(express.json());
 app.use(cors());
 app.use("/upload", express.static("uploads"));
+app.use(express.static(__dirname + "/posts"));
 
 //Image
 app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
@@ -91,7 +92,7 @@ app.get("/tags/:name", PostControllers.getSimilarTags);
 // app.get("/comments", CommentControllers.getAllComment);
 // app.get("/posts/:id/comments", CommentControllers.getOneComment);
 
-app.listen(process.env.PORT || 4444, (error) => {
+app.listen("/", process.env.PORT || 4444, (error) => {
   if (error) {
     return console.log(error);
   }
