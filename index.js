@@ -75,7 +75,7 @@ app.post(
 app.get("/top", PostControllers.getTop);
 app.delete("/posts/:id", checkAuth, PostControllers.remove);
 app.patch(
-  "/posts/:id/edit",
+  "/posts/:id",
   checkAuth,
   postCreateValidation,
   handleValidationErrors,
