@@ -92,7 +92,7 @@ app.get("/tags/:name", PostControllers.getSimilarTags);
 // app.get("/comments", CommentControllers.getAllComment);
 // app.get("/posts/:id/comments", CommentControllers.getOneComment);
 
-app.listen("/", process.env.PORT || 4444, (error) => {
+app.listen(process.env.PORT || 4444, (error) => {
   if (error) {
     return console.log(error);
   }
