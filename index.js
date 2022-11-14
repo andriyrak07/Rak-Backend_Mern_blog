@@ -63,7 +63,7 @@ app.post(
 );
 
 // posts
-app.get("/posts", PostControllers.getAll);
+app.get("/", PostControllers.getAll);
 app.get("/posts/:id", PostControllers.getOne);
 app.post(
   "/posts",
