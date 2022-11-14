@@ -86,7 +86,7 @@ app.patch(
 app.get("/tags", PostControllers.getLastTags);
 app.get("/tags/:name", PostControllers.getSimilarTags);
 
-comments
+// comments
 app.post("/posts/:id/comments", checkAuth, CommentControllers.createComment);
 app.get("/comments", CommentControllers.getAllComment);
 app.get("/posts/:id/comments", CommentControllers.getOneComment);

@@ -25,7 +25,7 @@ export const getAllComment = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: "Failed to get the posts",
+      message: "Failed to get the comments",
     });
   }
 };
@@ -40,7 +40,7 @@ export const getOneComment = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: "Failed to get the posts",
+      message: "Failed to get the comments",
     });
   }
 };
