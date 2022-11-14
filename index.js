@@ -66,7 +66,7 @@ app.post(
 app.get("/posts", PostControllers.getAll);
 app.get("/posts/:id", PostControllers.getOne);
 app.post(
-  "/add-post",
+  "/posts",
   checkAuth,
   postCreateValidation,
   handleValidationErrors,
