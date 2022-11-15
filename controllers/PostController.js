@@ -127,7 +127,7 @@ export const update = async (req, res) => {
 
 export const getTop = async (req, res, next) => {
   try {
-    const posts = await PostModel.find().limit(20).exec();
+    const posts = await PostModel.find().limit(10).exec();
     const top = posts
       .sort((a, b) => {
         return a.viewsCount - b.viewsCount;

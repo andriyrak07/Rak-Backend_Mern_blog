@@ -8,7 +8,6 @@ import {
   registerValidator,
   loginValidator,
   postCreateValidation,
-  commentCreateValidation,
 } from "./validations.js";
 
 import { checkAuth, handleValidationErrors } from "./utils/index.js";
@@ -19,7 +18,10 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(
+    process.env.MONGODB_URI ||
+      "mongodb+srv://admin:3557098126@cluster0.ktawkvi.mongodb.net/blog?retryWrites=true&w=majority"
+  )
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
 
@@ -39,7 +41,7 @@ const upload = multer({ storage });
 app.use(express.json());
 app.use(cors());
 app.use("/upload", express.static("uploads"));
-// 
+//
 //Image
 app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
   res.json({
