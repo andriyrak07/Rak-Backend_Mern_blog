@@ -35,7 +35,7 @@ export const register = async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({
-      message: "Problems asdf",
+      message: "Change your email or password",
     });
   }
 };
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "Problems with login or password",
+      message: "Change your email or password",
     });
   }
 };
