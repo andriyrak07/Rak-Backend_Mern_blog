@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import cors from "cors";
-
+import fs from "fs";
 import mongoose from "mongoose";
 
 import {
@@ -18,10 +18,7 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(
-    process.env.MONGODB_URI ||
-      "mongodb+srv://admin:3557098126@cluster0.ktawkvi.mongodb.net/blog?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
 
@@ -29,6 +26,9 @@ const app = express();
 
 const storage = multer.diskStorage({
   destination: (_, __, cb) => {
+    if (!fs.existsSync("uploads")) {
+      fs.mkdirSync("uploads")
+    }
     cb(null, "uploads");
   },
   filename: (_, file, cb) => {
