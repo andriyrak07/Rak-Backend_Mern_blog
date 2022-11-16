@@ -1,15 +1,15 @@
 import { body } from "express-validator";
 
 export const loginValidator = [
-  body("email").isEmail(),
-  body("password").isLength({ min: 5 }),
+  body("email", "Incorrect format of email").isEmail(),
+  body("password", "Min length of password 5 characters").isLength({ min: 5 }),
 ];
 
 export const registerValidator = [
-  body("email").isEmail(),
-  body("password").isLength({ min: 5 }),
-  body("fullName").isLength({ min: 3 }),
-  body("avatarUrl").optional().isURL(),
+  body("email", "Incorrect format of email").isEmail(),
+  body("password", "Min length of password 5 characters").isLength({ min: 5 }),
+  body("fullName", "Enter a name").isLength({ min: 3 }),
+  body("avatarUrl", "Invalid avatar link").optional().isURL(),
 ];
 
 export const postCreateValidation = [

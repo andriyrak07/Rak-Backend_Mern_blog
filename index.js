@@ -18,7 +18,10 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(
+    process.env.MONGODB_URI ||
+      "mongodb+srv://admin:3557098126@cluster0.ktawkvi.mongodb.net/blog?retryWrites=true&w=majority"
+  )
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
 
@@ -27,7 +30,7 @@ const app = express();
 const storage = multer.diskStorage({
   destination: (_, __, cb) => {
     if (!fs.existsSync("uploads")) {
-      fs.mkdirSync("uploads")
+      fs.mkdirSync("uploads");
     }
     cb(null, "uploads");
   },
